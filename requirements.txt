@@ -1,0 +1,4 @@
+os
+win32com
+docx
+psycopg2
