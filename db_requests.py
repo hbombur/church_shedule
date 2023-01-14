@@ -50,8 +50,15 @@ def check_table(shortname_month):
 	return result[0]
 
 
+# update shedule on day
+def day_update_shedule(day_lst, month):
+	name_table = format_name_table(get_shortname_month(month))
+	conn = db_conn()
+	with conn.cursor() as cursor:
+		cursor.execute("""INSERT INTO public.%s WHERE day_month LIKE %s""")
+
 # insert data into table of shedule
-def update_shedule(table_lst, shortname_month):
+def insert_shedule(table_lst, shortname_month):
 	conn = db_conn()
 	with conn.cursor() as cursor:
 		for row in table_lst:
@@ -94,4 +101,4 @@ def create_table_month(shortname_month):
 def add_month_shedule(table_lst, month):
 	shortname_month = get_shortname_month(month)
 	create_table_month(shortname_month)
-	update_shedule(table_lst, shortname_month)
+	insert_shedule(table_lst, shortname_month)
