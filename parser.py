@@ -1,9 +1,8 @@
 import docx
-import psycopg2
-from db_requests import add_month_shedule
+from database.db_requests import add_month_shedule
 from win32com import client as wc
 import os
-import re
+
 
 # convert file .doc to file .docx
 def conv_doc2docx():
@@ -35,7 +34,7 @@ def delete_word_file():
 	for path in paths:
 		os.remove(path)
 
-# open fil to read and extract
+# open file to read and extract
 def open_file():
 	doc = docx.Document('Расписание на Январь 2023 духовенство.docx')
 	return doc
@@ -52,19 +51,19 @@ def extract_table(doc):
 	return table_lst
 
 
-def parsing_file():
-	# need create download file function on server
-	conv_doc2docx()
-	month = input()
-	table_lst = extract_table(open_file())
-	add_month_shedule(table_lst, month)
+def parsing_file(month):
+	try:
+		# need create function for upload file on server
+		conv_doc2docx()
+		# month = input() # use function from bot to get month
+		table_lst = extract_table(open_file())
+		add_month_shedule(table_lst, month)
 
-	# except Exception as _ex:
-	# 	print("[INFO] error while working with PostgreSQL", _ex)
-	# finally:
-	# 	if conn:
-	# 		conn.commit()
-	# 		conn.close()
-	# 		print('[INFO] PostgreSQL connection closed')
+	except Exception as _ex:
+		print("[INFO] error of parsing file", _ex)
+	finally:
+		print('[INFO] Finish parsing')
 
-parsing_file()
+# Testing functions
+# parsing_file()
+# update_shedule_ministry('прот. Илья', 3, 'февраль')

@@ -1,15 +1,16 @@
 import psycopg2
 from db_func import format_name_table
+from config.config import user,password,host,port,db_name
 
 
 # create connection to database
 def db_conn():
 	conn = psycopg2.connect(
-		user="postgres",
-		password="11041972propoved",
-		host="localhost",
-		port="5432",
-		dbname="Church_shedule"
+		user=user,
+		password=password,
+		host=host,
+		port=port,
+		dbname=db_name
 	)
 	print("Connection to DataBase")
 	return conn
