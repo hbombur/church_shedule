@@ -2,3 +2,5 @@ os
 win32com
 docx
 psycopg2
+aiogram
+dotenv
