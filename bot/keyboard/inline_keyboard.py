@@ -2,12 +2,19 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from .dictrict_named_dict import DistDict
 
 dist_dict = DistDict
+area_dict = DistDict
 
 ikb_vikary_church = InlineKeyboardMarkup()
 ib_church = {'ib_church1': InlineKeyboardButton(text='Храм святителя Спиридона епископа Тримифунтского',
                                                 callback_data='ib_church1'),
              'ib_church2': InlineKeyboardButton(text='Храм Покрова Пресвятой Богородицы в Филях',
-                                                callback_data='ib_church2')}
+                                                callback_data='ib_church2'),
+             'ib_church3': InlineKeyboardButton(text='Храм Всех Святых на Филевской Пойме',
+                                                callback_data='ib_church3')}
+
+for adm in ib_church:
+    ikb_vikary_church.insert(ib_church.get(adm))
+
 
 ikb_city_west_area = InlineKeyboardMarkup()
 ib_area = {'ib_area1': InlineKeyboardButton(text='Внуково', callback_data="ib_area1"),
@@ -46,4 +53,6 @@ for dist in ib_dist_list:
 
 dist_dict = {'ib_dist8': ikb_city_west_area,
              'ib_dist1': ikb_city_west_area}
+
+area_dict = {'ib_area10': ikb_vikary_church}
 

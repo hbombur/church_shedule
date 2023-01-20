@@ -1,6 +1,6 @@
-os
-win32com
-docx
-psycopg2
+
+#win32com
+python-docx
+psycopg2-binary
 aiogram
-dotenv
+python-dotenv

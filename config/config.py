@@ -3,5 +3,5 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
-TOKEN = os.getenv('SheduleTokenApiTelegram')
+TOKEN = os.getenv('ScheduleTokenApiTelegram')
 
